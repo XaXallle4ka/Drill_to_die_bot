@@ -67,9 +67,9 @@ for event in longpoll.listen():
             elif "пока" in request:
                 write_msg(event.user_id, "Ну слава богу ты ушел")
             elif "как дела" in request:
-                write_msg(event.user_id, how_are_you_answer[random.randint(0, len(how_are_you_answer))])
+                write_msg(event.user_id, how_are_you_answer[random.randint(0, 3)])
             elif request.split()[0] == "command":
                 write_msg(event.user_id, commander.do(request[8::]))
             else:
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, ne_ponyal[random.randint(0, len(ne_ponyal))]))
+                send_photo(vk_ses, event.user_id, *upload_photo(upload, ne_ponyal[random.randint(0, 3)]))
 
