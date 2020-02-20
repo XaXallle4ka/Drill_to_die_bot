@@ -1,0 +1,34 @@
+info_help = ('Напиши "Инфо" + обьект из списка:\nИСКОПАЕМЫЕ\n1. Камень\n2. Железо\n3. Золото\n 4. Иридий' + 
+             '\n5. Белый кристалл\n6. Зеленый кристалл\n7. Красный кристалл\nКОРАБЛИ\n1. Тиер 1\n2. Тиер 2\n3. Тиер 3')
+
+command_list = "Список комманд:\n1. Как дела\n2. Привет\n3. Пока\n4. Инфо\n5. Крол"
+
+hello = "Доброго времени суток!"
+bye = "Бай бай)"
+
+help_text = "Не понимаю тебя, напиши 'помощь', чтобы узнать список команд"
+
+token = "6da505bf6faea32f5b4d8f52cd6f89509d0cbf5b0f74d3743a21b7f1516022c02ce81a1fac7198005a5b6"
+
+ne_ponyal = ['https://yt3.ggpht.com/a/AGF-l7_i56GQZf-s9TMplzzJFClNljRuc-CU3Oi2=s900-c-k-c0xffffffff-no-rj-mo', 
+             'https://pbs.twimg.com/media/D7l_DcGXYAIsHq5.jpg',
+             'https://i.ytimg.com/vi/EXyn3Xm4QI8/maxresdefault.jpg',
+             'https://i1.sndcdn.com/artworks-000329585706-s0jmhb-t500x500.jpg']
+
+how_are_you_answer = ['Отлично!', "Я сегодня не в настроении", "Суперски", "Я еще не определился"]
+
+material_list = {'stone': 'https://sun9-60.userapi.com/c855332/v855332998/1fd3e5/-oMj0Y7VKB0.jpg',
+                 'ferrum': 'https://sun9-11.userapi.com/c855332/v855332998/1fd3d3/FMgj5nE0pIM.jpg',
+                 'gold': 'https://sun9-69.userapi.com/c855332/v855332998/1fd3b8/-4d0o7lQ-NM.jpg',
+                 'iridium': 'https://sun9-31.userapi.com/c855332/v855332998/1fd3ca/bXO_eOQQHOE.jpg',
+                 'whitecrystall': 'https://sun9-61.userapi.com/c855332/v855332998/1fd3ee/d63alj4JAs0.jpg',
+                 'greencrystall': 'https://sun9-60.userapi.com/c855332/v855332998/1fd3c1/319UL5OZ_zk.jpg',
+                 'redcrystall': 'https://sun9-34.userapi.com/c855332/v855332998/1fd3dc/dg9DCzpPZIY.jpg'}
+                 
+material_description = {'stone': 'Камень:\nСредняя цена - n\nШанс на получение - Очень высокий',
+                         'ferrum': 'Железо:\nСредняя цена - n\nШанс на получение - Высокий',
+                         'gold': 'Золото:\nСредняя цена - n\nШанс на получение - Средний',
+                         'iridium': 'Иридий:\nСредняя цена - n\nШанс на получение - Низкий',
+                         'whitecrystall': 'Белый кристалл:\nСредняя цена - n\nШанс на получение - Очень маленький',
+                         'greencrystall': 'Зеленый кристалл:\nСредняя цена - n\nШанс на получение - Крайне маленький',
+                         'redcrystall': 'Красный кристалл:\nСредняя цена - n\nШанс на получение - 0.0000000000000001%'}
