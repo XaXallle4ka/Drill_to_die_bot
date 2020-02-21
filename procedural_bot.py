@@ -61,34 +61,6 @@ for event in longpoll.listen():
             elif "как дела" in request:
                 write_msg(event.user_id, how_are_you_answer[random.randint(0, 3)])
 
-            elif 'инфо' in request and 'камень' in request:
-                write_msg(event.user_id, material_description['stone'])
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list['stone']))
-
-            elif 'инфо' in request and 'железо' in request:
-                write_msg(event.user_id, material_description['ferrum'])
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list['ferrum']))
-
-            elif 'инфо' in request and 'золото' in request:
-                write_msg(event.user_id, material_description['gold'])
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list['gold']))
-
-            elif 'инфо' in request and 'иридий' in request:
-                write_msg(event.user_id, material_description['iridium'])
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list['iridium']))
-
-            elif 'инфо' in request and 'белый кристалл' in request:
-                write_msg(event.user_id, material_description['whitecrystall'])
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list['whitecrystall']))
-
-            elif 'инфо' in request and 'зеленый кристалл' in request:
-                write_msg(event.user_id, material_description['greencrystall'])
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list['greencrystall']))
-
-            elif 'инфо' in request and 'красный кристалл' in request:
-                write_msg(event.user_id, material_description['redcrystall'])
-                send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list['redcrystall']))
-
             elif request.split()[0] == "command":
                 write_msg(event.user_id, commander.do(request[8::]))
 
@@ -99,7 +71,15 @@ for event in longpoll.listen():
                 send_photo(vk_ses, event.user_id, *upload_photo(upload, ne_ponyal[random.randint(0, 3)]))
 
             elif 'инфо' in request:
-                write_msg(event.user_id, info_help)
+                output = 0
+                for i in material_translate.keys():
+                    if i in request:
+                        write_msg(event.user_id, material_description[material_translate[i]])
+                        send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list[material_translate[i]]))
+                        output = 1
+                        break
+                if output == 0:        
+                    write_msg(event.user_id, info_help)
                 
             else:
                 write_msg(event.user_id, help_text)
