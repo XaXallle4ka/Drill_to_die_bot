@@ -3,6 +3,8 @@ import random
 import requests
 from io import BytesIO
 
+import json, os
+
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.upload import VkUpload
@@ -40,6 +42,22 @@ def send_photo(vk, user_id, owner_id, photo_id, access_key):
         attachment=attachment
     )
 
+def send_message(vk_session, id_type, id, message=None, attachment=None, keyboard=None):
+    vk.method('messages.send', {id_type: id, 'message': message, 'random_id': random.randint(-2147483648, +2147483648), 'attachment': attachment, 'keyboard': keyboard})
+ 
+def create_keyboard(response):
+    keyboard = VkKeyboard(one_time=True)
+ 
+    #if response == 'привет':
+    keyboard.add_line()
+    keyboard.add_button('Хочу тян', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Тян не нужны!', color=VkKeyboardColor.NEGATIVE)
+ 
+ 
+    keyboard = keyboard.get_keyboard()
+    return keyboard
+
 vk = vk_api.VkApi(token=token)
 
 vk_ses = vk.get_api()
@@ -68,6 +86,10 @@ for event in longpoll.listen():
 
             elif "как дела" in request:
                 write_msg(event.user_id, how_are_you_answer[random.randint(0, 3)])
+            
+            elif 'клавиатура' in request:
+                #create_keyboard(request)
+                send_message(vk, 'peer_id', event.user_id, 'clava', None, create_keyboard(request))
 
             elif request.split()[0] == "command":
                 write_msg(event.user_id, commander.do(request[8::]))
