@@ -56,4 +56,4 @@ ships_description = {'Betty': 'Бетти' + '\nЦена для полной п�
 
 ship_images = {'Betty': 'https://psv4.userapi.com/c856432/u445497371/docs/d2/8d066bb89b92/ship-1.jpg?extra=V3Qql29_0f5eW8FNalsWOvA1kD7nlDXCvv6kKW-RRNX4nDu2CJSm8T48cH_3sx3cnukH7sp8gbVkKtNgu5l95BOFtZrxNQBa73VYDntBt8rF9hJOcQ4eHY2GlwgPs6sj8932rw-xygjg3xGcSdiSar0',
                'Apollo': 'https://psv4.userapi.com/c856432/u445497371/docs/d7/d894765498bc/ship-4.jpg?extra=Fh06SveLx_oE-FC2qYjnXGji-6exSb_2hyiO-vfzIaUUj2cQrieUx5C9x5rg9Dvhz10W9l8qZZNEuDs-Cj6IT0mNNWNQkuL_pGWf9YyTLGVMaX9yOV6grhezxlj59aN6eoYYg8xW40k28g47vFadLl4',
-               'Hexagon': 'https://psv4.userapi.com/c856432/u445497371/docs/d5/3ab2b28331bc/ship-2.jpg?extra=acW42Ct-DGKyMtAGt-INY-vJCfVbkyqw5pVZsJxLFSszQC3iyxSTpmSICvAlek_Gf0tssh0o4u9sswJXdW0tgO-hDwYlK2s29ph27OUMJcPY3khyN-JSLP2TeGzlPmctu2JjjKOhFHUnI87pYVqM1LY'}
+               'Hexagon': 'https://psv4.userapi.com/c856432/u445497371/docs/d16/7fd04fac02dc/ship-3.jpg?extra=XIbo1HNZErtFjaYUh-S06gUW4epxC2jYj8Ab4Vma8bet99TJoiKMaJcarombjzO8R7yrW6UPvL0JpwwfOO8cCICJJRsNtV0xeJXgaxWfHSJHoTH4XyrcrgapFg8UH4XyGowZGGoHuQcumuY0HmA9Z2s'}
