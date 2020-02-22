@@ -8,8 +8,12 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.upload import VkUpload
 from vk_api.utils import get_random_id
 
+from parser_things import *
+
 from commander.commander import Commander
 from constants import *
+
+from vk_api.keyboard import VkKeyboard, VkKeyboardColor
 
 def write_msg(user_id, message):
     vk.method('messages.send', {'user_id': user_id, 'message': message, 'random_id': random.randint(0, 2048)})

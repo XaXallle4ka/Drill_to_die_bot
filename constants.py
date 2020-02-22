@@ -1,5 +1,9 @@
+from parser_things import __ParseItems, find_item_cost, find_item_description
+
+items = __ParseItems()
+
 info_help = ('Напиши "Инфо" + обьект из списка:\nИСКОПАЕМЫЕ\n1. Камень\n2. Железо\n3. Золото\n 4. Иридий' + 
-             '\n5. Белый кристалл\n6. Зеленый кристалл\n7. Красный кристалл\nКОРАБЛИ\n1. Тиер 1\n2. Тиер 2\n3. Тиер 3')
+             '\n5. Белый кристалл\n6. Зеленый кристалл\n7. Красный кристалл\nКОРАБЛИ\n1. Бетти\n2. Апполо\n3. Хексагон')
 
 command_list = "Список комманд:\n1. Как дела\n2. Привет\n3. Пока\n4. Инфо\n5. Крол"
 
@@ -25,13 +29,13 @@ material_list = {'stone': 'https://sun9-60.userapi.com/c855332/v855332998/1fd3e5
                  'greencrystall': 'https://sun9-60.userapi.com/c855332/v855332998/1fd3c1/319UL5OZ_zk.jpg',
                  'redcrystall': 'https://sun9-34.userapi.com/c855332/v855332998/1fd3dc/dg9DCzpPZIY.jpg'}
                  
-material_description = {'stone': 'Камень:\nСредняя цена - n\nШанс на получение - Очень высокий',
-                        'ferrum': 'Железо:\nСредняя цена - n\nШанс на получение - Высокий',
-                        'gold': 'Золото:\nСредняя цена - n\nШанс на получение - Средний',
-                        'iridium': 'Иридий:\nСредняя цена - n\nШанс на получение - Низкий',
-                        'whitecrystall': 'Белый кристалл:\nСредняя цена - n\nШанс на получение - Безумно маленький',
-                        'greencrystall': 'Зеленый кристалл:\nСредняя цена - n\nШанс на получение - Крайне маленький',
-                        'redcrystall': 'Красный кристалл:\nСредняя цена - n\nШанс на получение - Очень маленький'}
+material_description = {'stone': 'Камень:\nСредняя цена - ' + str(find_item_cost('Stone', items)) + '\nШанс на получение - Очень высокий\nОписание:\n' + find_item_description('Stone', items),
+                        'ferrum': 'Железо:\nСредняя цена - ' + str(find_item_cost('Ferrum', items)) + '\nШанс на получение - Высокий\nОписание:\n' + find_item_description('Ferrum', items),
+                        'gold': 'Золото:\nСредняя цена - ' + str(find_item_cost('Gold', items)) + '\nШанс на получение - Средний\nОписание:\n' + find_item_description('Gold', items),
+                        'iridium': 'Иридий:\nСредняя цена - ' + str(find_item_cost('Iridium', items)) + '\nШанс на получение - Низкий\nОписание:\n' + find_item_description('Iridium', items),
+                        'whitecrystall': 'Белый кристалл:\nСредняя цена - ' + str(find_item_cost('WhiteCrystal', items)) + '\nШанс на получение - Безумно маленький\nОписание:\n' + find_item_description('WhiteCrystal', items),
+                        'greencrystall': 'Зеленый кристалл:\nСредняя цена - ' + str(find_item_cost('GreenCrystal', items)) + '\nШанс на получение - Крайне маленький\nОписание:\n' + find_item_description('GreenCrystal', items),
+                        'redcrystall': 'Красный кристалл:\nСредняя цена - ' + str(find_item_cost('RedCrystal', items)) + '\nШанс на получение - Очень маленький\nОписание:\n' + find_item_description('RedCrystal', items)}
 
 material_translate = {'камень': 'stone',
                       'железо': 'ferrum',
