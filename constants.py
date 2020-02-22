@@ -1,10 +1,12 @@
-from parser_things import __ParseItems, __ParseShips, find_item_cost, find_item_description, find_ship_cost, find_ship_description
+from parser_things import parseItems, parseShips, find_item_cost, find_item_description, find_ship_cost, find_ship_description, find_ship_upgrades
 
-items = __ParseItems()
-ships = __ParseShips()
+items = parseItems()
+ships = parseShips()
 
 info_help = ('Напиши "Инфо" + обьект из списка:\nИСКОПАЕМЫЕ\n1. Камень\n2. Железо\n3. Золото\n 4. Иридий' + 
              '\n5. Белый кристалл\n6. Зеленый кристалл\n7. Красный кристалл\nКОРАБЛИ\n1. Бетти\n2. Аполло\n3. Хексагон')
+
+info_upgrades = ('Если хочешь узнать полный список улучшений корабля, напиши:\n"улучшения" + название корабля')
 
 command_list = "Список комманд:\n1. Как дела\n2. Привет\n3. Пока\n4. Инфо\n5. Глад"
 

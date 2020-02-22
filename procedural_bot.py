@@ -50,6 +50,10 @@ longpoll = VkLongPoll(vk)
 
 commander = Commander()
 
+ships = parseShips()
+
+items = parseItems()
+
 print("Бот запущен")
 for event in longpoll.listen():
     if event.type == VkEventType.MESSAGE_NEW:
@@ -86,9 +90,15 @@ for event in longpoll.listen():
                     if ship in request:
                         write_msg(event.user_id, ships_description[ships_translate[ship]])
                         send_photo(vk_ses, event.user_id, *upload_photo(upload, ship_images[ships_translate[ship]]))
+                        write_msg(event.user_id, info_upgrades)
                         output = 1
                 if output == 0:        
                     write_msg(event.user_id, info_help)
+            elif 'улучшения' in request:
+                for ship in ships_translate.keys():
+                    if ship in request:
+                        write_msg(event.user_id, find_ship_upgrades(ships_translate[ship], ships))
+                
                 
             else:
                 write_msg(event.user_id, help_text)
