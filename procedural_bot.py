@@ -71,17 +71,22 @@ for event in longpoll.listen():
             elif 'help' in request or 'помощь' in request:
                 write_msg(event.user_id, command_list)
 
-            elif 'крол' in request:
+            elif 'глад' in request:
                 send_photo(vk_ses, event.user_id, *upload_photo(upload, ne_ponyal[random.randint(0, 3)]))
 
             elif 'инфо' in request:
                 output = 0
-                for i in material_translate.keys():
-                    if i in request:
-                        write_msg(event.user_id, material_description[material_translate[i]])
-                        send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list[material_translate[i]]))
+                for item in material_translate.keys():
+                    if item in request:
+                        write_msg(event.user_id, material_description[material_translate[item]])
+                        send_photo(vk_ses, event.user_id, *upload_photo(upload, material_list[material_translate[item]]))
                         output = 1
                         break
+                for ship in ships_translate.keys():
+                    if ship in request:
+                        write_msg(event.user_id, ships_description[ships_translate[ship]])
+                        send_photo(vk_ses, event.user_id, *upload_photo(upload, ship_images[ships_translate[ship]]))
+                        output = 1
                 if output == 0:        
                     write_msg(event.user_id, info_help)
                 

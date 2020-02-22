@@ -28,6 +28,16 @@ def __ParseShips():
         for upgrade in ship['upgrades']:
             for lev_up in upgrade['levelUpgrades']:
                 sum_upgrades += lev_up['price']
-        ships.append(ship["name"], sum_upgrades, ship['description'])
+        ships.append([ship["name"], sum_upgrades, ship['description']])
 
     return ships
+
+def find_ship_cost(ship, ships):
+    for name in ships:
+        if ship == name[0]:
+            return name[1]
+
+def find_ship_description(ship, ships):
+    for name in ships:
+        if ship == name[0]:
+            return name[2]
