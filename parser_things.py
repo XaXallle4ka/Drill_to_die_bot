@@ -8,8 +8,7 @@ with open("C:/Users/vlad0/Documents/GitHub/Drill_to_Die_TELEGRAM_BOT/Files/data.
 def parseItems():
     items = []
     for item in data["items"]:
-        items.append([item["name"], item["price"], item['destription']])
-
+        items.append([item["name"], item["price"], str(' '.join(translate_me(item['destription'])['text']))])
     return items
 
 def find_item_cost(item, items):
