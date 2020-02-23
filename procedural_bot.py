@@ -45,16 +45,70 @@ def send_photo(vk, user_id, owner_id, photo_id, access_key):
 def send_message(vk_session, id_type, id, message=None, attachment=None, keyboard=None):
     vk.method('messages.send', {id_type: id, 'message': message, 'random_id': random.randint(-2147483648, +2147483648), 'attachment': attachment, 'keyboard': keyboard})
  
-def create_keyboard(response):
+def create_keyboard_main():
     keyboard = VkKeyboard(one_time=True)
- 
-    #if response == 'привет':
+
+    keyboard.add_button('Инфо', color=VkKeyboardColor.POSITIVE)
     keyboard.add_line()
-    keyboard.add_button('Хочу тян', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_button('Глад', color=VkKeyboardColor.NEGATIVE)
+ 
+    keyboard = keyboard.get_keyboard()
+    return keyboard
+
+def create_keyboard_choose():
+    keyboard = VkKeyboard(one_time=True)
+
+    keyboard.add_button('Инфо материалы', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_button('Инфо корабли', color=VkKeyboardColor.NEGATIVE)
     keyboard.add_line()
-    keyboard.add_button('Тян не нужны!', color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button('Выход', color=VkKeyboardColor.PRIMARY)
+
+    keyboard = keyboard.get_keyboard()
+    return keyboard
+
+def create_keyboard_info1():
+    keyboard = VkKeyboard(one_time=True)
+
+    keyboard.add_button('Инфо камень', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_button('Инфо железо', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_button('Инфо золото', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Инфо иридий', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_button('Инфо белый кристалл', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Инфо красный кристалл', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_button('Инфо зеленый кристалл', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Выход', color=VkKeyboardColor.PRIMARY)
  
- 
+    keyboard = keyboard.get_keyboard()
+    return keyboard
+
+def create_keyboard_info2():
+    keyboard = VkKeyboard(one_time=True)
+
+    keyboard.add_button('Инфо бетти', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Инфо аполло', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Инфо хексагон', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Выход', color=VkKeyboardColor.PRIMARY)
+
+    keyboard = keyboard.get_keyboard()
+    return keyboard
+
+def create_keyboard_upgrades():
+    keyboard = VkKeyboard(one_time=True)
+
+    keyboard.add_button('Улучшения бетти', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Улучшения аполло', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Улучшения хексагон', color=VkKeyboardColor.POSITIVE)
+    keyboard.add_line()
+    keyboard.add_button('Выход', color=VkKeyboardColor.PRIMARY)
+
     keyboard = keyboard.get_keyboard()
     return keyboard
 
@@ -76,6 +130,7 @@ print("Бот запущен")
 for event in longpoll.listen():
     if event.type == VkEventType.MESSAGE_NEW:
         if event.to_me:
+            send_message(vk, 'peer_id', event.user_id, 'Бот печатает •••', None, create_keyboard_main())
             request = event.text
             request = request.strip().lower()
             if "привет" in request:
@@ -86,10 +141,6 @@ for event in longpoll.listen():
 
             elif "как дела" in request:
                 write_msg(event.user_id, how_are_you_answer[random.randint(0, 3)])
-            
-            elif 'клавиатура' in request:
-                #create_keyboard(request)
-                send_message(vk, 'peer_id', event.user_id, 'clava', None, create_keyboard(request))
 
             elif request.split()[0] == "command":
                 write_msg(event.user_id, commander.do(request[8::]))
@@ -101,6 +152,11 @@ for event in longpoll.listen():
                 send_photo(vk_ses, event.user_id, *upload_photo(upload, ne_ponyal[random.randint(0, 3)]))
 
             elif 'инфо' in request:
+                send_message(vk, 'peer_id', event.user_id, 'Выбирай, о чем хочешь узнать', None, create_keyboard_choose())
+                if 'инфо материалы' in request:
+                    send_message(vk, 'peer_id', event.user_id, 'Бот собирает информацию о материалах ☑', None, create_keyboard_info1())
+                elif 'инфо корабли' in request:
+                    send_message(vk, 'peer_id', event.user_id, 'Бот собирает информацию о кораблях ☑', None, create_keyboard_info2())
                 output = 0
                 for item in material_translate.keys():
                     if item in request:
@@ -113,9 +169,12 @@ for event in longpoll.listen():
                         write_msg(event.user_id, ships_description[ships_translate[ship]])
                         send_photo(vk_ses, event.user_id, *upload_photo(upload, ship_images[ships_translate[ship]]))
                         write_msg(event.user_id, info_upgrades)
+                        send_message(vk, 'peer_id', event.user_id, 'Хочешь узнать информацию об улучшениях?', None, create_keyboard_upgrades())
                         output = 1
                 if output == 0:        
                     write_msg(event.user_id, info_help)
+            elif 'выход' in request:
+                pass
             elif 'улучшения' in request:
                 for ship in ships_translate.keys():
                     if ship in request:
