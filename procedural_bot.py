@@ -12,6 +12,8 @@ from vk_api.utils import get_random_id
 
 from parser_things import *
 
+from translator import *
+
 from commander.commander import Commander
 from constants import *
 
@@ -51,6 +53,8 @@ def create_keyboard_main():
     keyboard.add_button('Инфо', color=VkKeyboardColor.POSITIVE)
     keyboard.add_line()
     keyboard.add_button('Глад', color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_line()
+    keyboard.add_button('Помощь', color=VkKeyboardColor.PRIMARY)
  
     keyboard = keyboard.get_keyboard()
     return keyboard
@@ -112,6 +116,21 @@ def create_keyboard_upgrades():
     keyboard = keyboard.get_keyboard()
     return keyboard
 
+def common_comands(request):
+    if "привет" in request:
+                write_msg(event.user_id, hello)
+
+    elif "пока" in request:
+        write_msg(event.user_id, bye)
+
+    elif "как дела" in request:
+        write_msg(event.user_id, how_are_you_answer[random.randint(0, 3)])
+
+def translate(request):
+    if 'переведи' in request:
+        text = request[8:]
+        write_msg(event.user_id, ' '.join(translate_me(text)['text']))
+
 vk = vk_api.VkApi(token=token)
 
 vk_ses = vk.get_api()
@@ -133,16 +152,12 @@ for event in longpoll.listen():
             send_message(vk, 'peer_id', event.user_id, 'Бот печатает •••', None, create_keyboard_main())
             request = event.text
             request = request.strip().lower()
-            if "привет" in request:
-                write_msg(event.user_id, hello)
+            
+            common_comands(request)
 
-            elif "пока" in request:
-                write_msg(event.user_id, bye)
+            translate(request)
 
-            elif "как дела" in request:
-                write_msg(event.user_id, how_are_you_answer[random.randint(0, 3)])
-
-            elif request.split()[0] == "command":
+            if request.split()[0] == "command":
                 write_msg(event.user_id, commander.do(request[8::]))
 
             elif 'help' in request or 'помощь' in request:
@@ -181,5 +196,5 @@ for event in longpoll.listen():
                         write_msg(event.user_id, find_ship_upgrades(ships_translate[ship], ships))
                 
                 
-            else:
-                write_msg(event.user_id, help_text)
+            # else:
+                # write_msg(event.user_id, help_text)

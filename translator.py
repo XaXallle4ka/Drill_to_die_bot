@@ -11,3 +11,12 @@ def translate_me(mytext):
         "lang": 'en-ru'}
     response = requests.get(URL ,params=params)
     return response.json()
+
+def translate_me_rus(mytext):
+
+    params = {
+        "key": KEY,     
+        "text": mytext,
+        "lang": 'ru-en'}
+    response = requests.get(URL ,params=params)
+    return response.json()
