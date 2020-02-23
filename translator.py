@@ -10,7 +10,9 @@ def translate_me(mytext):
         "text": mytext,
         "lang": 'en-ru'}
     if mytext == None or mytext == '' or mytext == ' ':
-        return mytext
+        mytext = 'Ошибка текста, попробуйте написать текст по другому'
+        mytext = mytext.split(' ')
+        return {'text': mytext}
     else:
         response = requests.get(URL ,params=params)
         return response.json()
