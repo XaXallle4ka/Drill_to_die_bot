@@ -1,4 +1,5 @@
 import os, json
+from translator import *
 
 data = {}
 with open("C:/Users/vlad0/Documents/GitHub/Drill_to_Die_TELEGRAM_BOT/Files/data.json") as file:
@@ -28,9 +29,9 @@ def parseShips():
         sum_upgrades = 0
         for upgrade in ship['upgrades']:
             for lev_up in upgrade['levelUpgrades']:
-                upgrade_list[upgrade['name'] + ' level ' + str(lev_up['level'])] = 'price = ' + str(lev_up['price']) + '\n' + '\n'
+                upgrade_list[' '.join(translate_me(upgrade['name'])['text']) + ' уровень ' + str(lev_up['level'])] = 'цена = ' + str(lev_up['price']) + '\n' + '\n'
                 sum_upgrades += lev_up['price']
-        ships.append([ship["name"], sum_upgrades, ship['description'], upgrade_list])
+        ships.append([ship["name"], sum_upgrades, ' '.join(translate_me(ship['description'])['text']), upgrade_list])
 
     return ships
 
