@@ -59,6 +59,13 @@ def create_keyboard_main():
     keyboard = keyboard.get_keyboard()
     return keyboard
 
+def create_keyboard_reqursion():
+    keyboard = VkKeyboard(one_time=True)
+
+    keyboard.add_button('Рекурсия', color=VkKeyboardColor.POSITIVE)
+    keyboard = keyboard.get_keyboard()
+    return keyboard
+
 def create_keyboard_choose():
     keyboard = VkKeyboard(one_time=True)
 
@@ -165,6 +172,9 @@ for event in longpoll.listen():
 
             elif 'глад' in request:
                 send_photo(vk_ses, event.user_id, *upload_photo(upload, ne_ponyal[random.randint(0, 3)]))
+            
+            elif 'рекурсия' in request:
+                send_message(vk, 'peer_id', event.user_id, 'Возможно, вы имели ввиду "Рекурсия"', None, create_keyboard_reqursion())
 
             elif 'инфо' in request:
                 send_message(vk, 'peer_id', event.user_id, 'Выбирай, о чем хочешь узнать', None, create_keyboard_choose())

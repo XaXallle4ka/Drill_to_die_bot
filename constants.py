@@ -8,7 +8,7 @@ info_help = ('Напиши "Инфо" + обьект из списка:\nИСК�
 
 info_upgrades = ('Если хочешь узнать полный список улучшений корабля, напиши:\n"улучшения" + название корабля')
 
-command_list = "Список комманд:\n1. Как дела\n2. Привет\n3. Пока\n4. Инфо\n5. Глад\n6. Переведи + английский текст для перевода"
+command_list = "Список комманд:\n1. Как дела\n2. Привет\n3. Пока\n4. Инфо\n5. Глад\n6. Переведи + английский текст для перевода\n7. Рекурсия"
 
 hello = "Доброго времени суток!"
 bye = "Бай бай)"
@@ -56,6 +56,6 @@ ships_description = {'Betty': 'Бетти' + '\nЦена для полной п�
                      'Apollo': 'Аполло' + '\nЦена для полной прокачки - ' + str(find_ship_cost('Apollo', ships)) + '\nОписание:\n' + find_ship_description('Apollo', ships),
                      'Hexagon': 'Хексагон' + '\nЦена для полной прокачки - ' + str(find_ship_cost('Hexagon', ships)) + '\nОписание:\n' + find_ship_description('Hexagon', ships)}
 
-ship_images = {'Betty': 'https://psv4.userapi.com/c856432/u445497371/docs/d2/8d066bb89b92/ship-1.jpg?extra=V3Qql29_0f5eW8FNalsWOvA1kD7nlDXCvv6kKW-RRNX4nDu2CJSm8T48cH_3sx3cnukH7sp8gbVkKtNgu5l95BOFtZrxNQBa73VYDntBt8rF9hJOcQ4eHY2GlwgPs6sj8932rw-xygjg3xGcSdiSar0',
-               'Apollo': 'https://psv4.userapi.com/c856432/u445497371/docs/d7/d894765498bc/ship-4.jpg?extra=Fh06SveLx_oE-FC2qYjnXGji-6exSb_2hyiO-vfzIaUUj2cQrieUx5C9x5rg9Dvhz10W9l8qZZNEuDs-Cj6IT0mNNWNQkuL_pGWf9YyTLGVMaX9yOV6grhezxlj59aN6eoYYg8xW40k28g47vFadLl4',
-               'Hexagon': 'https://psv4.userapi.com/c856432/u445497371/docs/d16/7fd04fac02dc/ship-3.jpg?extra=XIbo1HNZErtFjaYUh-S06gUW4epxC2jYj8Ab4Vma8bet99TJoiKMaJcarombjzO8R7yrW6UPvL0JpwwfOO8cCICJJRsNtV0xeJXgaxWfHSJHoTH4XyrcrgapFg8UH4XyGowZGGoHuQcumuY0HmA9Z2s'}
+ship_images = {'Betty': 'https://sun9-46.userapi.com/c855616/v855616969/1ff76a/GmNX4yTEgDM.jpg',
+               'Apollo': 'https://sun9-18.userapi.com/c206816/v206816969/7c937/hyJod6NVfGA.jpg',
+               'Hexagon': 'https://sun9-42.userapi.com/c857416/v857416666/18b231/cHzvF932lwk.jpg'}
