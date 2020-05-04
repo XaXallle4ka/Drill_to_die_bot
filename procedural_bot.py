@@ -134,9 +134,12 @@ def common_comands(request):
         write_msg(event.user_id, how_are_you_answer[random.randint(0, 3)])
 
 def translate(request):
+    if 'translate' in request:
+        text = request[9:]
+        write_msg(event.user_id, ' '.join(translate_me(text)['text']))
     if 'переведи' in request:
         text = request[8:]
-        write_msg(event.user_id, ' '.join(translate_me(text)['text']))
+        write_msg(event.user_id, ' '.join(translate_me_rus(text)['text']))
 
 vk = vk_api.VkApi(token=token)
 

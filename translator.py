@@ -23,5 +23,10 @@ def translate_me_rus(mytext):
         "key": KEY,     
         "text": mytext,
         "lang": 'ru-en'}
-    response = requests.get(URL ,params=params)
-    return response.json()
+    if mytext == None or mytext == '' or mytext == ' ':
+        mytext = 'Ошибка текста, попробуйте написать текст по другому'
+        mytext = mytext.split(' ')
+        return {'text': mytext}
+    else:
+        response = requests.get(URL ,params=params)
+        return response.json()

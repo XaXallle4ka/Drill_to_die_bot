@@ -2,7 +2,7 @@ import os, json
 from translator import *
 
 data = {}
-with open("C:/Users/vlad0/Documents/GitHub/Drill_to_Die_TELEGRAM_BOT/Files/data.json") as file:
+with open("data.json") as file:
     data = json.load(file)
 
 def parseItems():
